@@ -3,9 +3,9 @@
 A little project implementing OpenAI API's assistant object. 
 
 # Warnings
-**Usage Costs**: This will use your OpenAI account to generate assistants, which requires an OpenAI account. Submitting messages will lead to some charges on your account, depending on how many tokens you submit, and assistants may not be available to free accounts.**
+**Usage Costs**: This will use your OpenAI account to generate assistants, which requires an OpenAI account. Submitting messages will lead to some charges on your account, depending on how many tokens you submit, and assistants may not be available to free accounts.
 
-**Key Secrecy": Be careful not to expose your OpenAI API key; your OpenAI API key should remain secret!
+**Key Secrecy**: Be careful not to expose your OpenAI API key; your OpenAI API key should remain secret!
 
 
 # How To Use:
