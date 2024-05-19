@@ -18,6 +18,13 @@ Make sure you have an OpenAI API account and OpenAI API secret key (read more on
 Note that you may need to have a paid account for the assistant feature to be available to you.
 
 ## Installation
+Consider setting up a virtual environment.
+```
+python3 -m venv venv
+source venv/bin/activate  # On macOS and Linux
+venv\Scripts\activate  # On Windows
+```
+
 Install the code using ```git clone https://github.com/PetaBread545/openai-api-assistant.git```
 
 **Set up API key**
