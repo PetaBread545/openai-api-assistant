@@ -45,10 +45,8 @@ file_uploaded = st.sidebar.file_uploader(
     "Upload a file to begin!", key="file_upload"
 )
 
-# Upload file button - store the file ID
-if st.sidebar.button("Upload File"):
-    # Uploading a file
-    if file_uploaded:
+if file_uploaded:
+    if st.sidebar.button("Upload File"):
         with open(file_uploaded.name, "wb") as f:
             f.write(file_uploaded.getbuffer())
         
@@ -64,7 +62,7 @@ if st.sidebar.button("Upload File"):
         data["file_id_list"].append(another_file_id) # Add to data
         with open(assistants_file, 'w') as f:
             json.dump(data, f, indent=4)  # Write the updated data back to the file
-    
+        
 if os.path.isfile(assistants_file):
     # Read the current list of file IDs from the JSON file
     with open(assistants_file, 'r') as f:
@@ -179,6 +177,7 @@ if st.session_state.start_chat:
                 if message.run_id == run.id and message.role == "assistant"
             ]
 
+            # Display messages in appropriate order
             for message in reversed(assistant_messages_for_run):
                 full_response = process_message(message=message)
                 st.session_state.messages.append(
