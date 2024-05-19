@@ -110,20 +110,7 @@ if st.sidebar.button("Start Chatting..."):
 # Process messages - extract message content
 def process_message(message):
     message_content = message.content[0].text
-    annotations = (
-        message_content.annotations if hasattr(message_content, "annotations") else []
-    )
-
-    # Iterate over the annotations and add footnotes
-    for index, annotation in enumerate(annotations):
-        # Replace the text with a footnote
-        message_content.value = message_content.value.replace(
-            annotation.text, f" [{index + 1}]"
-        )
-
-    # Add footnotes to the end of the message content
-    full_response = message_content.value
-    return full_response
+    return message_content.value
 
 st.title("Pair Programmer")
 st.write("Talk it out with a trained robot programmer!")
@@ -142,15 +129,15 @@ if st.session_state.start_chat:
             st.markdown(message["content"])
 
     # chat input for the user
-    if prompt := st.chat_input("What's new?"):
-        # Add user message to the state and display on the screen
-        st.session_state.messages.append({"role": "user", "content": prompt})
+    if user_in := st.chat_input("What's new?"):
+        # Print user chat input
+        st.session_state.messages.append({"role": "user", "content": user_in})
         with st.chat_message("user"):
-            st.markdown(prompt)
+            st.markdown(user_in)
 
         # add the user's message to the existing thread
         client.beta.threads.messages.create( 
-            thread_id=st.session_state.thread_id, role="user", content=prompt
+            thread_id=st.session_state.thread_id, role="user", content=user_in
         )
 
         # Create a run
@@ -187,7 +174,7 @@ if st.session_state.start_chat:
                     st.markdown(full_response, unsafe_allow_html=True)
 
     else:
-        # Prompt users to start chat
+        # user_in users to start chat
         st.write(
             "Please upload at least a file to get started by clicking on the 'Start Chat' button"
         )

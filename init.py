@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import openai
 import json
 
-
 load_dotenv()
 
 client = openai.OpenAI()
@@ -36,12 +35,6 @@ def create_assistant_and_thread():
         file_ids=[],
     )
     thread = client.beta.threads.create()
-
-    run = client.beta.threads.runs.create(
-        thread_id=thread.id,
-        assistant_id=assistant.id,
-        instructions="Introduce yourself and ask the user how you may be of assistance.",
-    )
 
     # Store IDs in json 
     with open(assistants_file, 'w') as f:
