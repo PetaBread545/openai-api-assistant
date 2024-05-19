@@ -18,6 +18,7 @@ Note that you may need to have a paid account for the assistant feature to be av
 
 #### Running the code
 Install the code using ```git clone https://github.com/PetaBread545/openai-api-assistant.git```
+
 At the root level, create a `.env` file containing `OPENAI_API_KEY=<Your key here>`, where `<Your key here>` is replaced with your OpenAI API key (read more about this [here](https://platform.openai.com/api-keys))
 
 Install dependencies with ```pip install -r requirements.txt```
